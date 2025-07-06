@@ -1,59 +1,45 @@
 import { NextResponse } from "next/server"
 
 /**
- * This API route provides an alternative way to connect to Google Sheets
- * using the environment variable GOOGLE_SCRIPT_URL
+ * Google Sheets API Configuration and Health Check
+ * This endpoint verifies the Google Sheets integration is working
  */
-export async function POST(request: Request) {
+
+export async function GET(request: Request) {
   try {
-    const { email } = await request.json()
-
-    if (!email || typeof email !== "string") {
-      return NextResponse.json({ success: false, message: "Email is required" }, { status: 400 })
+    const googleScriptUrl = process.env.GOOGLE_SCRIPT_URL
+    if (!googleScriptUrl) {
+      throw new Error("GOOGLE_SCRIPT_URL environment variable is not set")
     }
 
-    // Get the Google Script URL from environment variables
-    const scriptUrl = process.env.GOOGLE_SCRIPT_URL
-
-    if (!scriptUrl) {
-      console.error("GOOGLE_SCRIPT_URL environment variable is not set")
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Google Script URL not configured",
-        },
-        { status: 500 },
-      )
-    }
-
-    // Send the email to the Google Apps Script
-    const response = await fetch(scriptUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        timestamp: new Date().toISOString(),
-        source: "API Route",
-      }),
+    // Test the connection to Google Sheets
+    const response = await fetch(googleScriptUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
     })
 
     if (!response.ok) {
-      throw new Error(`Failed to submit to Google Sheet: ${response.status}`)
+      throw new Error(`Google Sheets API error: ${response.statusText}`)
     }
 
-    // Log the successful submission
-    console.log(`API route successfully sent email to Google Sheet: ${email}`)
+    const result = await response.json()
 
     return NextResponse.json({
       success: true,
-      message: "Email saved successfully to Google Sheet",
+      status: "Google Sheets integration is active",
+      googleSheetsStatus: result.status,
+      message: "The API is properly configured and connected to Google Sheets",
     })
+
   } catch (error) {
-    console.error("Error in Google Sheets API route:", error)
+    console.error("Error checking Google Sheets connection:", error)
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to save email to Google Sheet",
+        message: "Failed to connect to Google Sheets",
+        error: error instanceof Error ? error.message : "Unknown error",
       },
       { status: 500 },
     )

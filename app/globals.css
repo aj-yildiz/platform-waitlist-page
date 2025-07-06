@@ -86,7 +86,7 @@ body {
 
 @layer base {
   * {
-    @apply border-gray-300; /* Updated to a valid Tailwind class */
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
