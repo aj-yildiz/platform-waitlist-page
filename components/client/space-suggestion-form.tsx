@@ -15,7 +15,7 @@ export default function SpaceSuggestionForm() {
     setMessage("")
 
     try {
-      const response = await fetch("/api/google-sheets/waitlist", {
+      const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export default function SpaceSuggestionForm() {
         body: JSON.stringify({
           email,
           location,
-          formType: "space-suggestion",
+          formType: "space_suggestion",
         }),
       })
 

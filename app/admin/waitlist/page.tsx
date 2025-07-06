@@ -23,6 +23,9 @@ type WaitlistEntry = {
   source: string
   created_at: string
   updated_at: string
+  form_type: 'waitlist' | 'space_suggestion'
+  user_type?: 'Patient' | 'Practitioner' | 'Gym'
+  location?: string
 }
 
 /**
@@ -52,11 +55,11 @@ export default function WaitlistAdminPage() {
       setLoading(true)
       setError(null)
 
-      const response = await fetch("/api/waitlist?include_entries=true")
+      const response = await fetch("/api/waitlist")
       const data = await response.json()
 
       if (data.success) {
-        setEntries(data.entries || [])
+        setEntries(data.data || [])
         setTotalCount(data.count || 0)
       } else {
         setError(data.message || "Failed to fetch waitlist data")
@@ -144,11 +147,19 @@ export default function WaitlistAdminPage() {
     }
 
     // Create CSV content
-    const headers = ["Email", "Source", "Timestamp", "Created At"]
+    const headers = ["Email", "Source", "Form Type", "User Type", "Location", "Timestamp", "Created At"]
     const csvContent = [
       headers.join(","),
       ...entries.map((entry) =>
-        [entry.email, entry.source, entry.timestamp, new Date(entry.created_at).toLocaleString()].join(","),
+        [
+          entry.email,
+          entry.source,
+          entry.form_type,
+          entry.user_type || "",
+          entry.location || "",
+          entry.timestamp,
+          new Date(entry.created_at).toLocaleString()
+        ].join(","),
       ),
     ].join("\n")
 
@@ -280,6 +291,9 @@ export default function WaitlistAdminPage() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>Email</TableHead>
+                    <TableHead>Form Type</TableHead>
+                    <TableHead>User Type</TableHead>
+                    <TableHead>Location</TableHead>
                     <TableHead>Source</TableHead>
                     <TableHead>Submitted</TableHead>
                     <TableHead>Created</TableHead>
@@ -290,6 +304,25 @@ export default function WaitlistAdminPage() {
                   {entries.map((entry) => (
                     <TableRow key={entry.id}>
                       <TableCell className="font-medium">{entry.email}</TableCell>
+                      <TableCell>
+                        <Badge variant={entry.form_type === 'waitlist' ? 'default' : 'secondary'}>
+                          {entry.form_type === 'waitlist' ? 'Waitlist' : 'Space Suggestion'}
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        {entry.user_type ? (
+                          <Badge variant="outline">{entry.user_type}</Badge>
+                        ) : (
+                          <span className="text-muted-foreground">-</span>
+                        )}
+                      </TableCell>
+                      <TableCell>
+                        {entry.location ? (
+                          <span className="text-sm">{entry.location}</span>
+                        ) : (
+                          <span className="text-muted-foreground">-</span>
+                        )}
+                      </TableCell>
                       <TableCell>
                         <Badge variant="secondary">{entry.source}</Badge>
                       </TableCell>

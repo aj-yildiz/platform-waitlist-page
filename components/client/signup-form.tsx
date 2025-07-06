@@ -22,7 +22,7 @@ export default function SignupForm() {
     setMessage("")
 
     try {
-      const response = await fetch("/api/google-sheets/waitlist", {
+      const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
