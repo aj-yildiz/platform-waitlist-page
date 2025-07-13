@@ -65,6 +65,40 @@ export default function LandingPage() {
         </section>
 
         {/* Features Section */}
+        <section className="w-full py-32 md:py-40 bg-white">
+          <div className="container px-4 mx-auto">
+            {/* Removed the 'What is Vastis?' section for design consistency */}
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 text-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-6 h-6 text-[#245FCB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Practitioner Independence</h3>
+                <p className="text-gray-600">Launch your solo practice without the overhead. Access fully equipped spaces when you need them.</p>
+              </div>
+              <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 text-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-6 h-6 text-[#245FCB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.60L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Patient Convenience</h3>
+                <p className="text-gray-600">Find and book qualified health providers in your area. Get the care you need, where you need it.</p>
+              </div>
+              <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 text-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-6 h-6 text-[#245FCB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Space Optimization</h3>
+                <p className="text-gray-600">Maximize your space usage and revenue by connecting with qualified practitioners in your community.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section id="faq" className="w-full py-24 md:py-32 bg-gradient-to-b from-gray-50 to-white">
           <div className="container px-4 mx-auto">
