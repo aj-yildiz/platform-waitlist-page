@@ -57,6 +57,17 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  if (!AIRTABLE_BASE_ID || !AIRTABLE_TOKEN) {
+    console.error("Missing Airtable environment variables.", {
+      AIRTABLE_BASE_ID_SET: !!AIRTABLE_BASE_ID,
+      AIRTABLE_TOKEN_SET: !!AIRTABLE_TOKEN
+    });
+    return NextResponse.json({
+      success: false,
+      message: "Server configuration error: Missing Airtable environment variables. Please contact support."
+    }, { status: 500 });
+  }
+
   try {
     const body = await request.json();
     const { email, location, formType = 'waitlist', userType } = body;
