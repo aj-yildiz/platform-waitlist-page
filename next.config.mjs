@@ -11,6 +11,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  env: {
+    AIRTABLE_TOKEN: process.env.AIRTABLE_TOKEN,
+    AIRTABLE_BASE_ID: process.env.AIRTABLE_BASE_ID,
+  },
 }
 
 export default nextConfig
