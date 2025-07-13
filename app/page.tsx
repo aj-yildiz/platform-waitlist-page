@@ -67,16 +67,7 @@ export default function LandingPage() {
         {/* Features Section */}
         <section className="w-full py-32 md:py-40 bg-white">
           <div className="container px-4 mx-auto">
-            <div className="max-w-2xl mx-auto text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-8">
-                What is Vastis?
-              </h2>
-              <p className="text-xl text-gray-600">
-                Vastis is a space-sharing marketplace that empowers allied health providers to find and book spaces they need.
-                <br className="hidden md:block" />
-                It's a win-win-win for practitioners, patients, and fitness spaces.
-              </p>
-            </div>
+            {/* Removed the 'What is Vastis?' section for design consistency */}
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 text-center">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -125,12 +116,7 @@ export default function LandingPage() {
                 Find answers to common questions about Vastis.
               </p>
               <div className="space-y-6">
-                <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 text-left">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">What is Vastis?</h3>
-                  <p className="text-gray-600">
-                    Vastis is a comprehensive digital platform designed to help individuals and teams streamline their workflows, improve collaboration, and achieve better results through advanced tools and analytics.
-                  </p>
-                </div>
+                {/* Removed the FAQ card that repeats the 'What is Vastis?' description */}
                 <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 text-left">
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">How do I get started with Vastis?</h3>
                   <p className="text-gray-600">
@@ -141,12 +127,6 @@ export default function LandingPage() {
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Is Vastis suitable for small businesses?</h3>
                   <p className="text-gray-600">
                     Vastis is designed to scale with your business, from individual users to large enterprises. Our flexible pricing and feature sets accommodate businesses of all sizes.
-                  </p>
-                </div>
-                <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 text-left">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">What kind of support do you offer?</h3>
-                  <p className="text-gray-600">
-                    We provide 24/7 customer support through multiple channels including live chat, email, and phone. Our dedicated support team is always ready to help you succeed.
                   </p>
                 </div>
               </div>

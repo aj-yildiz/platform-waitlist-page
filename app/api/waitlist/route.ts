@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server"
 
+export const runtime = 'nodejs';
+
 const AIRTABLE_API_URL = "https://api.airtable.com/v0/";
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
 const AIRTABLE_TOKEN = process.env.AIRTABLE_TOKEN;
