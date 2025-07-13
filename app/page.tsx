@@ -65,7 +65,7 @@ export default function LandingPage() {
         </section>
 
         {/* Features Section */}
-        <section className="w-full py-32 md:py-40 bg-white">
+        <section id="about" className="w-full py-32 md:py-40 bg-white">
           <div className="container px-4 mx-auto">
             {/* Removed the 'What is Vastis?' section for design consistency */}
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
