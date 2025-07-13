@@ -64,7 +64,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Features Section removed for a cleaner design */}
+        {/* Features Section */}
 
         <section id="faq" className="w-full py-24 md:py-32 bg-gradient-to-b from-gray-50 to-white">
           <div className="container px-4 mx-auto">
